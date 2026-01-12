@@ -6,25 +6,25 @@
 
 
 ## Table of Contents
-[What is KG-RAG](https://github.com/BaranziniLab/KG_RAG#what-is-kg-rag)
+[What is GraphAugmented Intelligence(RAG)](https://github.com/BaranziniLab/KG_RAG#what-is-kg-rag)
 
-[Example use case of KG-RAG](https://github.com/BaranziniLab/KG_RAG#example-use-case-of-kg-rag)
- - [Prompting GPT without KG-RAG](https://github.com/BaranziniLab/KG_RAG#without-kg-rag)  
- - [Prompting GPT with KG-RAG](https://github.com/BaranziniLab/KG_RAG#with-kg-rag)
- - [Example notebook for KG-RAG with GPT](https://github.com/BaranziniLab/KG_RAG/blob/main/notebooks/kg_rag_based_gpt_prompts.ipynb)
+[Example use case of GraphAugmented Intelligence](https://github.com/BaranziniLab/KG_RAG#example-use-case-of-kg-rag)
+ - [Prompting GPT without GAI-RAG](https://github.com/BaranziniLab/KG_RAG#without-kg-rag)  
+ - [Prompting GPT with GAI-RAG](https://github.com/BaranziniLab/KG_RAG#with-kg-rag)
+ - [Example notebook for GAI-RAG with GPT](https://github.com/BaranziniLab/KG_RAG/blob/main/notebooks/kg_rag_based_gpt_prompts.ipynb)
 
-[How to run KG-RAG](https://github.com/BaranziniLab/KG_RAG#how-to-run-kg-rag)
+[How to run GAI-RAG](https://github.com/BaranziniLab/KG_RAG#how-to-run-kg-rag)
  - [Step 1: Clone the repo](https://github.com/BaranziniLab/KG_RAG#step-1-clone-the-repo)
  - [Step 2: Create a virtual environment](https://github.com/BaranziniLab/KG_RAG#step-2-create-a-virtual-environment)
  - [Step 3: Install dependencies](https://github.com/BaranziniLab/KG_RAG#step-3-install-dependencies)
  - [Step 4: Update config.yaml](https://github.com/BaranziniLab/KG_RAG#step-4-update-configyaml)
  - [Step 5: Run the setup script](https://github.com/BaranziniLab/KG_RAG#step-5-run-the-setup-script)
- - [Step 6: Run KG-RAG from your terminal](https://github.com/BaranziniLab/KG_RAG#step-6-run-kg-rag-from-your-terminal)
+ - [Step 6: Run GAI-RAG from your terminal](https://github.com/BaranziniLab/KG_RAG#step-6-run-kg-rag-from-your-terminal)
     - [Using GPT](https://github.com/BaranziniLab/KG_RAG#using-gpt)
     - [Using GPT interactive mode](https://github.com/BaranziniLab/KG_RAG/blob/main/README.md#using-gpt-interactive-mode)
     - [Using Llama](https://github.com/BaranziniLab/KG_RAG#using-llama)
     - [Using Llama interactive mode](https://github.com/BaranziniLab/KG_RAG/blob/main/README.md#using-llama-interactive-mode)
-  - [Command line arguments for KG-RAG](https://github.com/BaranziniLab/KG_RAG?tab=readme-ov-file#command-line-arguments-for-kg-rag)
+  - [Command line arguments for -RAG](https://github.com/BaranziniLab/KG_RAG?tab=readme-ov-file#command-line-arguments-for-kg-rag)
   
 [BiomixQA: Benchmark dataset](https://github.com/BaranziniLab/KG_RAG/tree/main?tab=readme-ov-file#biomixqa-benchmark-dataset)
 
@@ -203,17 +203,6 @@ mcq_data = load_dataset("kg-rag/BiomixQA", "mcq")
 tf_data = load_dataset("kg-rag/BiomixQA", "true_false")
 ```
 
-
-## Citation
-
-```
-@article{soman2023biomedical,
-  title={Biomedical knowledge graph-enhanced prompt generation for large language models},
-  author={Soman, Karthik and Rose, Peter W and Morris, John H and Akbas, Rabia E and Smith, Brett and Peetoom, Braian and Villouta-Reyes, Catalina and Cerono, Gabriel and Shi, Yongmei and Rizk-Jackson, Angela and others},
-  journal={arXiv preprint arXiv:2311.17330},
-  year={2023}
-}
-```
 
 
 
