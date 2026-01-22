@@ -189,7 +189,6 @@ BiomixQA is a curated biomedical question-answering dataset utilized to validate
 
 The diverse nature of questions in this dataset, spanning multiple choice and true/false formats, along with its coverage of various biomedical concepts, makes it particularly suitable to support research and development in biomedical natural language processing, knowledge graph reasoning, and question-answering systems.
 
-This dataset is currently hosted in Hugging Face and you can find it [here](https://huggingface.co/datasets/kg-rag/BiomixQA).
 
 It’s easy to get started with BiomixQA—just three lines of Python to load the dataset:
 
