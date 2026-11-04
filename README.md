@@ -1,3 +1,13 @@
+> [!IMPORTANT]
+> **About this repository**
+> This repository is a copy of **[KG-RAG](https://github.com/BaranziniLab/KG_RAG)** (Knowledge Graph-based Retrieval Augmented Generation) by Karthik Soman and colleagues at the **Baranzini Lab, UCSF**, released under the [Apache License 2.0](LICENSE). All code, data and result files are the original authors' work. The only file I changed is this README: it is the upstream README with this note added.
+>
+> I used KG-RAG in my *Graph-Augmented Intelligence* project: knowledge-graph RAG for biomedical question answering, comparing GPT-4 and Llama on the BiomixQA benchmark, which the KG-RAG authors created. The files in `data/results` are the original authors' published results.
+>
+> If you use this work, please cite the original paper (see [Citation](#citation)). — Vishal Krishna Kumar
+
+---
+
 <p align="center">
   <img src="https://github.com/BaranziniLab/KG_RAG/assets/42702311/0b2f5b42-761e-4d5b-8d6f-77c8b965f017" width="450">
 </p>
@@ -6,25 +16,25 @@
 
 
 ## Table of Contents
-[What is GraphAugmented Intelligence(RAG)](https://github.com/BaranziniLab/KG_RAG#what-is-kg-rag)
+[What is KG-RAG](https://github.com/BaranziniLab/KG_RAG#what-is-kg-rag)
 
-[Example use case of GraphAugmented Intelligence](https://github.com/BaranziniLab/KG_RAG#example-use-case-of-kg-rag)
- - [Prompting GPT without GAI-RAG](https://github.com/BaranziniLab/KG_RAG#without-kg-rag)  
- - [Prompting GPT with GAI-RAG](https://github.com/BaranziniLab/KG_RAG#with-kg-rag)
- - [Example notebook for GAI-RAG with GPT](https://github.com/BaranziniLab/KG_RAG/blob/main/notebooks/kg_rag_based_gpt_prompts.ipynb)
+[Example use case of KG-RAG](https://github.com/BaranziniLab/KG_RAG#example-use-case-of-kg-rag)
+ - [Prompting GPT without KG-RAG](https://github.com/BaranziniLab/KG_RAG#without-kg-rag)  
+ - [Prompting GPT with KG-RAG](https://github.com/BaranziniLab/KG_RAG#with-kg-rag)
+ - [Example notebook for KG-RAG with GPT](https://github.com/BaranziniLab/KG_RAG/blob/main/notebooks/kg_rag_based_gpt_prompts.ipynb)
 
-[How to run GAI-RAG](https://github.com/BaranziniLab/KG_RAG#how-to-run-kg-rag)
+[How to run KG-RAG](https://github.com/BaranziniLab/KG_RAG#how-to-run-kg-rag)
  - [Step 1: Clone the repo](https://github.com/BaranziniLab/KG_RAG#step-1-clone-the-repo)
  - [Step 2: Create a virtual environment](https://github.com/BaranziniLab/KG_RAG#step-2-create-a-virtual-environment)
  - [Step 3: Install dependencies](https://github.com/BaranziniLab/KG_RAG#step-3-install-dependencies)
  - [Step 4: Update config.yaml](https://github.com/BaranziniLab/KG_RAG#step-4-update-configyaml)
  - [Step 5: Run the setup script](https://github.com/BaranziniLab/KG_RAG#step-5-run-the-setup-script)
- - [Step 6: Run GAI-RAG from your terminal](https://github.com/BaranziniLab/KG_RAG#step-6-run-kg-rag-from-your-terminal)
+ - [Step 6: Run KG-RAG from your terminal](https://github.com/BaranziniLab/KG_RAG#step-6-run-kg-rag-from-your-terminal)
     - [Using GPT](https://github.com/BaranziniLab/KG_RAG#using-gpt)
     - [Using GPT interactive mode](https://github.com/BaranziniLab/KG_RAG/blob/main/README.md#using-gpt-interactive-mode)
     - [Using Llama](https://github.com/BaranziniLab/KG_RAG#using-llama)
     - [Using Llama interactive mode](https://github.com/BaranziniLab/KG_RAG/blob/main/README.md#using-llama-interactive-mode)
-  - [Command line arguments for -RAG](https://github.com/BaranziniLab/KG_RAG?tab=readme-ov-file#command-line-arguments-for-kg-rag)
+  - [Command line arguments for KG-RAG](https://github.com/BaranziniLab/KG_RAG?tab=readme-ov-file#command-line-arguments-for-kg-rag)
   
 [BiomixQA: Benchmark dataset](https://github.com/BaranziniLab/KG_RAG/tree/main?tab=readme-ov-file#biomixqa-benchmark-dataset)
 
@@ -189,6 +199,7 @@ BiomixQA is a curated biomedical question-answering dataset utilized to validate
 
 The diverse nature of questions in this dataset, spanning multiple choice and true/false formats, along with its coverage of various biomedical concepts, makes it particularly suitable to support research and development in biomedical natural language processing, knowledge graph reasoning, and question-answering systems.
 
+This dataset is currently hosted in Hugging Face and you can find it [here](https://huggingface.co/datasets/kg-rag/BiomixQA).
 
 It’s easy to get started with BiomixQA—just three lines of Python to load the dataset:
 
@@ -202,6 +213,17 @@ mcq_data = load_dataset("kg-rag/BiomixQA", "mcq")
 tf_data = load_dataset("kg-rag/BiomixQA", "true_false")
 ```
 
+
+## Citation
+
+```
+@article{soman2023biomedical,
+  title={Biomedical knowledge graph-enhanced prompt generation for large language models},
+  author={Soman, Karthik and Rose, Peter W and Morris, John H and Akbas, Rabia E and Smith, Brett and Peetoom, Braian and Villouta-Reyes, Catalina and Cerono, Gabriel and Shi, Yongmei and Rizk-Jackson, Angela and others},
+  journal={arXiv preprint arXiv:2311.17330},
+  year={2023}
+}
+```
 
 
 
