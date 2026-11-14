@@ -1,10 +1,44 @@
 > [!IMPORTANT]
 > **About this repository**
-> This repository is a copy of **[KG-RAG](https://github.com/BaranziniLab/KG_RAG)** (Knowledge Graph-based Retrieval Augmented Generation) by Karthik Soman and colleagues at the **Baranzini Lab, UCSF**, released under the [Apache License 2.0](LICENSE). All code, data and result files are the original authors' work. The only file I changed is this README: it is the upstream README with this note added.
+> This repository is a copy of **[KG-RAG](https://github.com/BaranziniLab/KG_RAG)** (Knowledge Graph-based Retrieval Augmented Generation) by Karthik Soman and colleagues at the **Baranzini Lab, UCSF**, released under the [Apache License 2.0](LICENSE). The framework, data, notebooks and result files (`kg_rag/`, `data/`, `notebooks/`, the config files) are the original authors' work and are unchanged.
 >
-> I used KG-RAG in my *Graph-Augmented Intelligence* project: knowledge-graph RAG for biomedical question answering, comparing GPT-4 and Llama on the BiomixQA benchmark, which the KG-RAG authors created. The files in `data/results` are the original authors' published results.
+> I used KG-RAG in my *Graph-Augmented Intelligence* project: knowledge-graph RAG for biomedical question answering, comparing GPT-4 and Llama on the BiomixQA benchmark, which the KG-RAG authors created. What I added on top is small and listed under [My additions](#my-additions).
 >
 > If you use this work, please cite the original paper (see [Citation](#citation)). — Vishal Krishna Kumar
+
+[![CI](https://github.com/Vishal-Krishna-Kumar/GraphAugmented-Intelligence_GAI/actions/workflows/ci.yml/badge.svg)](https://github.com/Vishal-Krishna-Kumar/GraphAugmented-Intelligence_GAI/actions/workflows/ci.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+
+## My additions
+
+| Path | What it is |
+|---|---|
+| `analysis/summarize_results.py` | Scores the authors' published response files and prints the table below. Standard library only: no GPU, API key or `requirements.txt` needed. |
+| `tests/` | Unit tests for the scoring rules, a regression test on the published numbers, and checks that the notebooks, config files and benchmark files are well formed. |
+| `.github/workflows/ci.yml` | Runs the lint, a byte-compile of every source file, the tests and the table on Python 3.10 and 3.12. |
+
+## Results at a glance
+
+```
+python analysis/summarize_results.py
+```
+
+| Model | Task | Questions | Prompt only | KG-RAG | Change | Unparsed (prompt / KG-RAG) |
+|---|---|---:|---:|---:|---:|---:|
+| Llama-2-13b | True/False | 311 | 89.1% | 93.9% | +4.8 pts | 0 / 0 |
+| Llama-2-13b | Multiple choice | 306 | 30.7% | 52.6% | +21.9 pts | 0 / 65 |
+| GPT-3.5-Turbo | True/False | 311 | 87.1% | 95.2% | +8.0 pts | 0 / 0 |
+| GPT-3.5-Turbo | Multiple choice | 306 | 63.1% | 79.4% | +16.3 pts | 0 / 0 |
+| GPT-4 | True/False | 311 | 90.4% | 94.5% | +4.2 pts | 0 / 0 |
+| GPT-4 | Multiple choice | 306 | 68.3% | 74.2% | +5.9 pts | 0 / 0 |
+
+How to read it:
+
+- These are the **KG-RAG authors' runs**, not mine. The script reads the response files they published in `data/results` and scores them against the BiomixQA questions in `data/benchmark_data`.
+- "Prompt only" is the model answering from its own knowledge. "KG-RAG" is the same model given context retrieved from the SPOKE knowledge graph.
+- Accuracy is correct answers over all questions in the file. The paper reports bootstrap means over samples of 150 questions, so its figures differ slightly.
+- "Unparsed" counts responses with no usable answer; they are scored as wrong. The 65 for Llama-2 with KG-RAG are responses that did not follow the requested JSON format.
+- The multiple-choice extraction matches `notebooks/mcq_analysis.ipynb` row for row on all six files.
 
 ---
 
