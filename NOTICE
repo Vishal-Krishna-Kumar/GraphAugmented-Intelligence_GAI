@@ -1,0 +1,29 @@
+GraphAugmented-Intelligence_GAI
+
+This repository is a copy of KG-RAG (Knowledge Graph-based Retrieval Augmented
+Generation) by Karthik Soman and colleagues at the Baranzini Lab, University of
+California San Francisco.
+
+  Source:  https://github.com/BaranziniLab/KG_RAG
+  License: Apache License 2.0 (see LICENSE)
+  Paper:   Soman et al., "Biomedical knowledge graph-enhanced prompt generation
+           for large language models", arXiv:2311.17330
+
+The framework code (kg_rag/), the data and published result files (data/), the
+notebooks (notebooks/, .test_notebooks/), config.yaml, system_prompts.yaml and
+requirements.txt are the original authors' work and are unchanged from the
+upstream repository as of its commit 01b9f6e (2024-11-09).
+
+Changes made in this copy by Vishal Krishna Kumar:
+
+  README.md       Added the note, "My additions", "Results at a glance",
+                  "How KG-RAG answers a question" and "Before you run the
+                  framework" sections above the upstream README text.
+  .gitignore      Added Python and tool cache entries.
+  analysis/       New: summarize_results.py, which scores the published
+                  response files.
+  tests/          New: tests for the scoring rules and repository file checks.
+  .github/        New: continuous integration workflow.
+  pytest.ini      New.
+  ruff.toml       New.
+  NOTICE          New: this file.
