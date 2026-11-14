@@ -40,6 +40,32 @@ How to read it:
 - "Unparsed" counts responses with no usable answer; they are scored as wrong. The 65 for Llama-2 with KG-RAG are responses that did not follow the requested JSON format.
 - The multiple-choice extraction matches `notebooks/mcq_analysis.ipynb` row for row on all six files.
 
+## How KG-RAG answers a question
+
+This is the flow in `kg_rag/utility.py` (`retrieve_context`), with the default values from `config.yaml`:
+
+```mermaid
+flowchart TD
+    Q["Question"] --> E["Extract disease names<br/>(GPT-3.5)"]
+    E -->|"diseases found"| M["Match each name to a SPOKE disease node<br/>(Chroma vector DB, MiniLM embeddings)"]
+    E -->|"none found"| T["Take the 5 disease nodes closest to the question"]
+    M --> C["Fetch each node's context from the SPOKE knowledge graph"]
+    T --> C
+    C --> P["Keep only the sentences similar to the question<br/>(PubMedBert embeddings)"]
+    P --> L["LLM answers from the pruned context<br/>(GPT-4, GPT-3.5 or Llama-2)"]
+```
+
+The pruning step is what the authors call "prompt-aware context". A sentence from a node's context is kept only if its cosine similarity to the question is above the 75th percentile for that node and above 0.5. The total is capped at 150 sentences, split evenly across the matched nodes.
+
+## Before you run the framework
+
+The upstream instructions below still apply. Two things are easy to miss:
+
+- `config.yaml` ships with the original authors' absolute paths (`/data/somank/...`). Point these keys at your clone before running anything: `VECTOR_DB_DISEASE_ENTITY_PATH`, `VECTOR_DB_PATH`, `NODE_CONTEXT_PATH`, `LLM_CACHE_DIR`, `SAVE_RESULTS_PATH`, `MCQ_PATH`, `TRUE_FALSE_PATH`, `SINGLE_DISEASE_ENTITY_FILE` and `TWO_DISEASE_ENTITY_FILE`.
+- The GPT scripts read the key from the file named in `GPT_CONFIG_FILE` (default `$HOME/.gpt_config.env`), which must define `API_KEY`. Set `GPT_API_TYPE` to `azure` or `open_ai`.
+
+The results table above needs none of this.
+
 ---
 
 <p align="center">
