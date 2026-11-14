@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install test tools
+        run: pip install pytest ruff pyyaml
+      - name: Lint and format check (analysis and tests)
+        run: |
+          ruff check analysis tests
+          ruff format --check analysis tests
+      - name: Byte-compile all Python sources
+        run: python -m compileall -q kg_rag analysis
+      - name: Tests
+        run: pytest -q
+      - name: Results table
+        run: python analysis/summarize_results.py
